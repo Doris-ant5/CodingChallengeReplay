@@ -20,6 +20,7 @@ public class Product {
     @ManyToMany(mappedBy = "products")
     private List<PurchaseOrder> orders;
 
+    @Enumerated(EnumType.STRING)
     private Category category;
 
     public Product() {

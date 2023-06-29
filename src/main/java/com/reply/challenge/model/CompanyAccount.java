@@ -2,6 +2,8 @@ package com.reply.challenge.model;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
 @Entity
 @DiscriminatorValue("company")
@@ -9,12 +11,13 @@ public class CompanyAccount extends Customer{
 
     private String taxNumber;
 
-    private String companyForm;
+    @Enumerated(EnumType.STRING)
+    private CompanyForm companyForm;
 
     public CompanyAccount() {
         super();
     }
-    public CompanyAccount(String taxNumber, String companyForm) {
+    public CompanyAccount(String taxNumber, CompanyForm companyForm) {
         super();
         this.taxNumber = taxNumber;
         this.companyForm = companyForm;
@@ -28,11 +31,11 @@ public class CompanyAccount extends Customer{
         this.taxNumber = taxNumber;
     }
 
-    public String getCompanyForm() {
+    public CompanyForm getCompanyForm() {
         return companyForm;
     }
 
-    public void setCompanyForm(String companyForm) {
+    public void setCompanyForm(CompanyForm companyForm) {
         this.companyForm = companyForm;
     }
 }

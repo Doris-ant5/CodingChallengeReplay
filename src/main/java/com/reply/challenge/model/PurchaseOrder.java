@@ -18,6 +18,8 @@ public class PurchaseOrder {
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
+
+    @Enumerated(EnumType.STRING)
     private Status status;
 
 
