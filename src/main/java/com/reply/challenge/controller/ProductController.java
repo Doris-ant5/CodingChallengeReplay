@@ -1,6 +1,5 @@
 package com.reply.challenge.controller;
 
-
 import com.reply.challenge.model.Product;
 import com.reply.challenge.service.ProductService;
 import jakarta.validation.Valid;
@@ -84,7 +83,6 @@ public class ProductController {
             return ResponseEntity.notFound().build();
         }
 
-        // Aktualizacja pól, jeśli są dostarczone w żądaniu
         if (updatedProduct.getPrice() != null) {
             existingProduct.setPrice(updatedProduct.getPrice());
         }
@@ -92,9 +90,7 @@ public class ProductController {
             existingProduct.setAmountInStock(updatedProduct.getAmountInStock());
         }
 
-        // Zapisanie zaktualizowanego produktu w bazie danych lub innym źródle danych
-
-        return ResponseEntity.ok(existingProduct);
+        return ResponseEntity.ok(productService.updateProductById(existingProduct, id));
     }
 
 }

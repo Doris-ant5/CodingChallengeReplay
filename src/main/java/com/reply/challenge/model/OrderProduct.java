@@ -7,8 +7,8 @@ import jakarta.persistence.*;
 public class OrderProduct {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "orderproductgen")
-    @SequenceGenerator(name = "orderproductgen", sequenceName = "order_product_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ordersproductgen")
+    @SequenceGenerator(name = "ordersproductgen", sequenceName = "orders_product_id_seq", allocationSize = 1)
     private int id;
 
     @ManyToOne

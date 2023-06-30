@@ -9,8 +9,8 @@ import java.util.List;
 public class PurchaseOrder {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ordergen")
-    @SequenceGenerator(name = "ordergen", sequenceName = "order_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ordersgen")
+    @SequenceGenerator(name = "ordersgen", sequenceName = "orders_id_seq", allocationSize = 1)
     private int id;
 
     private Date orderDate;

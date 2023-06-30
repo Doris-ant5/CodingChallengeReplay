@@ -1,16 +1,17 @@
 package com.reply.challenge.model;
 
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import jakarta.persistence.*;
 
 
 import java.util.Date;
 
 @Entity
+@Table(name = "individual_account")
 @DiscriminatorValue("individual")
 public class IndividualAccount extends Customer{
+
+    private int id;
+
     @Temporal(TemporalType.DATE)
     private Date birthDate;
 
@@ -24,6 +25,16 @@ public class IndividualAccount extends Customer{
         super();
         this.birthDate = birthDate;
         this.identifierTag = identifierTag;
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Date getBirthDate() {

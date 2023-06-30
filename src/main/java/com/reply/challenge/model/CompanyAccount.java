@@ -1,11 +1,9 @@
 package com.reply.challenge.model;
 
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "company_account")
 @DiscriminatorValue("company")
 public class CompanyAccount extends Customer{
 
