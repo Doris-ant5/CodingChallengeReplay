@@ -1,5 +1,6 @@
 package com.reply.challenge.controller;
 
+import com.reply.challenge.model.Category;
 import com.reply.challenge.model.Product;
 import com.reply.challenge.service.ProductService;
 import jakarta.validation.Valid;
@@ -43,8 +44,12 @@ public class ProductController {
                 .body(productService.searchProductByName(name));
     }
 
-    @GetMapping("searchProductByCategory/{category}") //localhost:XXXX/api/v1/products/{category}
-    private ResponseEntity<Product> getProductCategory(@PathVariable String category) {
+    @GetMapping("searchProductByCategory") //localhost:XXXX/api/v1/products/{category}
+    private ResponseEntity<List<Product>> getProductCategory(@RequestParam("category") Category category) {
+        List<Product> products = productService.searchProductByCategory(category);
+        if (products.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(productService.searchProductByCategory(category));

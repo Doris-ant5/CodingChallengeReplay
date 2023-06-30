@@ -10,8 +10,6 @@ import java.util.Date;
 @DiscriminatorValue("individual")
 public class IndividualAccount extends Customer{
 
-    private int id;
-
     @Temporal(TemporalType.DATE)
     private Date birthDate;
 
@@ -25,16 +23,6 @@ public class IndividualAccount extends Customer{
         super();
         this.birthDate = birthDate;
         this.identifierTag = identifierTag;
-    }
-
-    @Override
-    public int getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(int id) {
-        this.id = id;
     }
 
     public Date getBirthDate() {

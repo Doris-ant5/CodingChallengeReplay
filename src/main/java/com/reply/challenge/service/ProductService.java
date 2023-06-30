@@ -2,6 +2,7 @@ package com.reply.challenge.service;
 
 import com.reply.challenge.exception.ProductNameExistsException;
 import com.reply.challenge.exception.ProductResourceNotFoundException;
+import com.reply.challenge.model.Category;
 import com.reply.challenge.model.Product;
 import com.reply.challenge.repository.ProductRepository;
 import org.springframework.stereotype.Service;
@@ -39,12 +40,12 @@ public class ProductService {
         return productOptional.get();
     }
 
-    public Product searchProductByCategory (String category) {
-        Optional<Product> productOptional = productRepo.findProductByCategory(category);
-        if(productOptional.isEmpty()) {
-            throw new ProductResourceNotFoundException(getNotFoundCategoryErrorMessage(category));
+    public List<Product> searchProductByCategory (Category category) {
+        List<Product> products = productRepo.findProductsByCategory(category);
+        if(products.isEmpty()) {
+            throw new ProductResourceNotFoundException(getNotFoundCategoryErrorMessage(category.toString()));
         }
-        return productOptional.get();
+        return products;
     }
 
     public Product addProduct(Product product) {
@@ -75,7 +76,6 @@ public class ProductService {
     private String getNotFoundCategoryErrorMessage(String category) {
         return "Product with category " + category + " not found.";
     }
-
 
     private String getNotFoundNameErrorMessage(String name) {
         return "Product with name " + name + " not found.";

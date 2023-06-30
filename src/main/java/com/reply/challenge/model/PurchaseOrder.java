@@ -1,5 +1,7 @@
 package com.reply.challenge.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -27,6 +29,7 @@ public class PurchaseOrder {
     @JoinTable(name = "order_product",
             joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id"))
+
     private List<Product> products;
     public PurchaseOrder() {
         super();
