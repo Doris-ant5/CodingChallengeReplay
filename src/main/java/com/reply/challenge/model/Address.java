@@ -2,6 +2,8 @@ package com.reply.challenge.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Address {
@@ -9,7 +11,11 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "addressgen")
     @SequenceGenerator(name = "addressgen", sequenceName = "address_id_seq", allocationSize = 1)
     private int id;
+    @NotBlank(message = "City must not be null or blank.")
+    @Size(min = 1, max= 50, message = "City must be longer than 1 character and less than 50.")
     private String city;
+    @NotBlank(message = "Country must not be null or blank.")
+    @Size(min = 1, max= 50, message = "Country must be longer than 1 character and less than 50.")
     private String country;
     @Enumerated(EnumType.STRING)
     private AddressType addressType;

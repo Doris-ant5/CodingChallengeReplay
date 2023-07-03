@@ -1,6 +1,5 @@
 package com.reply.challenge.controller;
 
-import com.reply.challenge.exception.AddressCountryExistsException;
 import com.reply.challenge.exception.AddressResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,13 +10,6 @@ public class AddressControllerAdvice {
 
     @ExceptionHandler(value = AddressResourceNotFoundException.class)
     public ResponseEntity<String> handleAddressResourceNotFoundException(AddressResourceNotFoundException ex) {
-        return ResponseEntity
-                .status(HttpStatus.NOT_FOUND)
-                .body(ex.getMessage());
-    }
-
-    @ExceptionHandler(value = AddressCountryExistsException.class)
-    public ResponseEntity<String> handleAddressCountryExistsException(AddressCountryExistsException ex) {
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
                 .body(ex.getMessage());

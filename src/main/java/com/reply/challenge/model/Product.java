@@ -1,6 +1,8 @@
 package com.reply.challenge.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.util.List;
 
@@ -11,6 +13,8 @@ public class Product {
     @SequenceGenerator(name = "productgen", sequenceName = "product_id_seq", allocationSize = 1)
     private int id;
     private Double price;
+    @NotBlank(message = "Name of the product must not be null or blank.")
+    @Size(min = 1, max= 50, message = "Name of the product must be longer than 1 character and less than 50.")
     private String name;
     private Integer amountInStock;
     @ManyToMany(mappedBy = "products")
