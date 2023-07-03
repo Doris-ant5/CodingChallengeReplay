@@ -1,6 +1,6 @@
 package com.reply.challenge.model;
 
-public enum Type {
+public enum AddressType {
 
     PERMANENT,
     SHIPPING

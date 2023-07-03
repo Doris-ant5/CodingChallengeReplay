@@ -2,7 +2,6 @@ package com.reply.challenge.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Entity
@@ -18,7 +17,7 @@ public class Address {
     private String country;
 
     @Enumerated(EnumType.STRING)
-    private Type type;
+    private AddressType addressType;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
@@ -29,10 +28,10 @@ public class Address {
         super();
     }
 
-    public Address(String city, String country, Type type, Customer customer) {
+    public Address(String city, String country, AddressType addressType, Customer customer) {
         this.city = city;
         this.country = country;
-        this.type = type;
+        this.addressType = addressType;
         this.customer = customer;
     }
 
@@ -60,12 +59,12 @@ public class Address {
         this.country = country;
     }
 
-    public Type getType() {
-        return type;
+    public AddressType getAddressType() {
+        return addressType;
     }
 
-    public void setType(Type type) {
-        this.type = type;
+    public void setAddressType(AddressType addressType) {
+        this.addressType = addressType;
     }
 
     public Customer getCustomer() {

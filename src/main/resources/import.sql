@@ -1,16 +1,16 @@
-INSERT INTO Customer (id, numberIdentification, profileType, name, lastName, customer_type) VALUES (nextval('customer_id_seq'), 645645, 'standard', 'Jan', 'Kowalski', 'individual');
-INSERT INTO Customer (id, numberIdentification, profileType, name, lastName, customer_type) VALUES (nextval('customer_id_seq'), 756756, 'expert', 'Ulrich', 'Jung', 'company');
-INSERT INTO Customer (id, numberIdentification, profileType, name, lastName, customer_type) VALUES (nextval('customer_id_seq'), 245477, 'gold', 'Piotr', 'Nowak', 'company');
-INSERT INTO Customer (id, numberIdentification, profileType, name, lastName, customer_type) VALUES (nextval('customer_id_seq'), 925436, 'standard', 'John', 'Doe', 'individual');
-INSERT INTO Customer (id, numberIdentification, profileType, name, lastName, customer_type) VALUES (nextval('customer_id_seq'), 23548, 'standard', 'Paweł', 'Jantar', 'individual');
-INSERT INTO Customer (id, numberIdentification, profileType, name, lastName, customer_type) VALUES (nextval('customer_id_seq'), 365767, 'expert', 'Tadeusz', 'Przybysz', 'company');
+INSERT INTO Customer (id, numberIdentification, profileType, name, birthDate, lastName, accountType) VALUES (nextval('customer_id_seq'), 645645, 'STANDARD', 'Jan', '13-09-1990', 'Kowalski', 'INDIVIDUAL');
+INSERT INTO Customer (id, numberIdentification, profileType, name, birthDate, lastName, accountType) VALUES (nextval('customer_id_seq'), 756756, 'EXTRA_PREMIUM', 'Ulrich', '03-10-1996', 'Jung', 'COMPANY');
+INSERT INTO Customer (id, numberIdentification, profileType, name, birthDate, lastName, accountType) VALUES (nextval('customer_id_seq'), 245477, 'GOLD', 'Piotr', '13-09-1990', 'Nowak', 'COMPANY');
+INSERT INTO Customer (id, numberIdentification, profileType, name, birthDate, lastName, accountType) VALUES (nextval('customer_id_seq'), 925436, 'PREMIUM', 'John', '14-06-1988', 'Doe', 'INDIVIDUAL');
+INSERT INTO Customer (id, numberIdentification, profileType, name, birthDate, lastName, accountType) VALUES (nextval('customer_id_seq'), 23548, 'STANDARD', 'Paweł', '27-03-2001', 'Jantar', 'INDIVIDUAL');
+INSERT INTO Customer (id, numberIdentification, profileType, name, birthDate, lastName, accountType) VALUES (nextval('customer_id_seq'), 365767, 'EXTRA_PREMIUM', 'Tadeusz', '12-10-1979', 'Przybysz', 'COMPANY');
 
-INSERT INTO Address (id, city, country, type, customer_id) VALUES (nextval('address_id_seq'), 'Warsaw', 'Poland', 'PERMANENT', 1);
-INSERT INTO Address (id, city, country, type, customer_id) VALUES (nextval('address_id_seq'), 'Berlin', 'Germany', 'PERMANENT', 2);
-INSERT INTO Address (id, city, country, type, customer_id) VALUES (nextval('address_id_seq'), 'Cracow', 'Poland', 'SHIPPING', 3);
-INSERT INTO Address (id, city, country, type, customer_id) VALUES (nextval('address_id_seq'), 'London', 'England', 'SHIPPING', 4);
-INSERT INTO Address (id, city, country, type, customer_id) VALUES (nextval('address_id_seq'), 'Radom', 'Poland', 'PERMANENT', 5);
-INSERT INTO Address (id, city, country, type, customer_id) VALUES (nextval('address_id_seq'), 'Skawina', 'Poland', 'SHIPPING', 6);
+INSERT INTO Address (id, city, country, addressType, customer_id) VALUES (nextval('address_id_seq'), 'Warsaw', 'Poland', 'PERMANENT', 1);
+INSERT INTO Address (id, city, country, addressType, customer_id) VALUES (nextval('address_id_seq'), 'Berlin', 'Germany', 'PERMANENT', 2);
+INSERT INTO Address (id, city, country, addressType, customer_id) VALUES (nextval('address_id_seq'), 'Cracow', 'Poland', 'SHIPPING', 3);
+INSERT INTO Address (id, city, country, addressType, customer_id) VALUES (nextval('address_id_seq'), 'London', 'England', 'SHIPPING', 4);
+INSERT INTO Address (id, city, country, addressType, customer_id) VALUES (nextval('address_id_seq'), 'Radom', 'Poland', 'PERMANENT', 5);
+INSERT INTO Address (id, city, country, addressType, customer_id) VALUES (nextval('address_id_seq'), 'Skawina', 'Poland', 'SHIPPING', 6);
 
 INSERT INTO Product (id, price, name, amountinstock, category) VALUES (nextval('product_id_seq'), 1500.50, 'fridge', 150, 'HOME');
 INSERT INTO Product (id, price, name, amountinstock, category) VALUES (nextval('product_id_seq'), 249.99, 'bonsai', 40, 'GARDEN');
@@ -32,11 +32,3 @@ INSERT INTO order_product (id, order_id, product_id, amount, priceItem) VALUES (
 INSERT INTO order_product (id, order_id, product_id, amount, priceItem) VALUES (nextval('orders_product_id_seq'), 4, 4, 1, 89.99);
 INSERT INTO order_product (id, order_id, product_id, amount, priceItem) VALUES (nextval('orders_product_id_seq'), 5, 5, 5, 20.20);
 INSERT INTO order_product (id, order_id, product_id, amount, priceItem) VALUES (nextval('orders_product_id_seq'), 6, 6, 4, 120.90);
-
-INSERT INTO individual_account (id, birthDate, identifierTag) VALUES (1, '13-09-1990', 'IN8687');
-INSERT INTO individual_account (id, birthDate, identifierTag) VALUES (4, '03-10-1996', 'ING3641');
-INSERT INTO individual_account (id, birthDate, identifierTag) VALUES (5, '13-09-1990', 'IN8687');
-
-INSERT INTO company_account (id, companyForm, taxNumber) VALUES (2, 'PUBLIC_CORPORATION', 'DEG364134');
-INSERT INTO company_account (id, companyForm, taxNumber) VALUES (3, 'LIMITED_JOINT_STOCK', 'PL32423234');
-INSERT INTO company_account (id, companyForm, taxNumber) VALUES (6, 'PARNERSHIP', 'PL657032');

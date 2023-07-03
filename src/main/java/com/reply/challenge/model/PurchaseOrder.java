@@ -1,7 +1,5 @@
 package com.reply.challenge.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -23,7 +21,6 @@ public class PurchaseOrder {
 
     @Enumerated(EnumType.STRING)
     private Status status;
-
 
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinTable(name = "order_product",

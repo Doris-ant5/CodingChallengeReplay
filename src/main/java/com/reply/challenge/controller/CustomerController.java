@@ -1,7 +1,8 @@
 package com.reply.challenge.controller;
 
+import com.reply.challenge.model.AccountType;
 import com.reply.challenge.model.Customer;
-import com.reply.challenge.model.Product;
+import com.reply.challenge.model.ProfileType;
 import com.reply.challenge.service.CustomerService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -44,6 +45,21 @@ public class CustomerController {
                 .status(HttpStatus.OK)
                 .body(customerService.searchCustomerByName(name));
     }
+
+    @GetMapping("searchCustomerByProfileTypeAndAccountType")
+    private ResponseEntity<List<Customer>> getCustomerProfileAndAccountType(
+            @RequestParam("profile") ProfileType profileType,
+            @RequestParam("account") AccountType accountType) {
+        List<Customer> customers = customerService.searchCustomerByProfileTypeAndAccountType(profileType, accountType);
+        if (customers.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(customerService.searchCustomerByProfileTypeAndAccountType(profileType, accountType));
+    }
+
+
 
     @PostMapping
     public ResponseEntity<Customer> addCustomer(@Valid @RequestBody Customer customer) {

@@ -3,8 +3,10 @@ package com.reply.challenge.service;
 import com.reply.challenge.exception.CustomerNameExistsException;
 import com.reply.challenge.exception.CustomerResourceNotFoundException;
 import com.reply.challenge.exception.ProductResourceNotFoundException;
+import com.reply.challenge.model.AccountType;
 import com.reply.challenge.model.Customer;
 import com.reply.challenge.model.Product;
+import com.reply.challenge.model.ProfileType;
 import com.reply.challenge.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 
@@ -41,10 +43,23 @@ public class CustomerService {
         return customerOptional.get();
     }
 
+    public List<Customer> searchCustomerByProfileTypeAndAccountType(ProfileType profileType, AccountType accountType) {
+        List<Customer> customers = customerRepo.findCustomerByProfileTypeAndAccountType(profileType, accountType);
+        if (customers.isEmpty()) {
+            throw new CustomerResourceNotFoundException(getNotFoundCustomerErrorMessage(profileType.toString() + accountType.toString()));
+        }
+        return customers;
+    }
+
+    private String getNotFoundCustomerErrorMessage(String s) {
+        return "Customer not found.";
+    }
+
+
     public Customer addCustomer(Customer customer) {
         Optional<Customer> customerOptional = customerRepo.findCustomerByName(customer.getName());
         if (customerOptional.isPresent()) {
-            throw new CustomerNameExistsException("Product with name of " + customer.getName() + " already exists.");
+            throw new CustomerNameExistsException("Customer with name of " + customer.getName() + " already exists.");
         }
         return customerRepo.save(customer);
     }

@@ -1,27 +1,28 @@
 package com.reply.challenge.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "customer_type")
 public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customergen")
     @SequenceGenerator(name = "customergen", sequenceName = "customer_id_seq", allocationSize = 1)
     private int id;
-
     private Integer numberIdentification;
-    private String profileType;
+    @Enumerated(EnumType.STRING)
+    private ProfileType profileType;
     private String name;
-
+    @Temporal(TemporalType.DATE)
+    private Date birthDate;
     private String lastName;
+    @Enumerated(EnumType.STRING)
+    private AccountType accountType;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     @JsonIgnore
@@ -35,23 +36,21 @@ public class Customer {
         super();
     }
 
-    public Customer(Integer numberIdentification, String profileType, String name, String lastName) {
+    public Customer(Integer numberIdentification, ProfileType profileType, String name,
+                    Date birthDate, String lastName, AccountType accountType,
+                    List<PurchaseOrder> orders, List<Address> addresses) {
         this.numberIdentification = numberIdentification;
         this.profileType = profileType;
         this.name = name;
+        this.birthDate = birthDate;
         this.lastName = lastName;
+        this.accountType = accountType;
+        this.orders = orders;
+        this.addresses = addresses;
     }
 
     public int getId() {
         return id;
-    }
-
-    public List<Address> getAddresses() {
-        return addresses;
-    }
-
-    public void setAddresses(List<Address> addresses) {
-        this.addresses = addresses;
     }
 
     public void setId(int id) {
@@ -66,11 +65,11 @@ public class Customer {
         this.numberIdentification = numberIdentification;
     }
 
-    public String getProfileType() {
+    public ProfileType getProfileType() {
         return profileType;
     }
 
-    public void setProfileType(String profileType) {
+    public void setProfileType(ProfileType profileType) {
         this.profileType = profileType;
     }
 
@@ -82,6 +81,14 @@ public class Customer {
         this.name = name;
     }
 
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
+
     public String getLastName() {
         return lastName;
     }
@@ -90,12 +97,27 @@ public class Customer {
         this.lastName = lastName;
     }
 
+    public AccountType getAccountType() {
+        return accountType;
+    }
 
-   public List<PurchaseOrder> getOrders() {
+    public void setAccountType(AccountType accountType) {
+        this.accountType = accountType;
+    }
+
+    public List<PurchaseOrder> getOrders() {
         return orders;
     }
 
     public void setOrders(List<PurchaseOrder> orders) {
         this.orders = orders;
+    }
+
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
     }
 }
