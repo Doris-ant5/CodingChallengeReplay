@@ -1,9 +1,9 @@
-INSERT INTO Customer (id, numberIdentification, profileType, name, birthDate, lastName, accountType) VALUES (nextval('customer_id_seq'), 645645, 'STANDARD', 'Jan', '13-09-1990', 'Kowalski', 'INDIVIDUAL');
-INSERT INTO Customer (id, numberIdentification, profileType, name, birthDate, lastName, accountType) VALUES (nextval('customer_id_seq'), 756756, 'EXTRA_PREMIUM', 'Ulrich', '03-10-1996', 'Jung', 'COMPANY');
-INSERT INTO Customer (id, numberIdentification, profileType, name, birthDate, lastName, accountType) VALUES (nextval('customer_id_seq'), 245477, 'GOLD', 'Piotr', '13-09-1990', 'Nowak', 'COMPANY');
-INSERT INTO Customer (id, numberIdentification, profileType, name, birthDate, lastName, accountType) VALUES (nextval('customer_id_seq'), 925436, 'PREMIUM', 'John', '14-06-1988', 'Doe', 'INDIVIDUAL');
-INSERT INTO Customer (id, numberIdentification, profileType, name, birthDate, lastName, accountType) VALUES (nextval('customer_id_seq'), 23548, 'STANDARD', 'Paweł', '27-03-2001', 'Jantar', 'INDIVIDUAL');
-INSERT INTO Customer (id, numberIdentification, profileType, name, birthDate, lastName, accountType) VALUES (nextval('customer_id_seq'), 365767, 'EXTRA_PREMIUM', 'Tadeusz', '12-10-1979', 'Przybysz', 'COMPANY');
+INSERT INTO Customer (id, numberIdentification, profileType, name, birthDate, lastName, accountType, taxNumber) VALUES (nextval('customer_id_seq'), 645645, 'STANDARD', 'Jan', '13-09-1990', 'Kowalski', 'INDIVIDUAL', '');
+INSERT INTO Customer (id, numberIdentification, profileType, name, birthDate, lastName, accountType, taxNumber) VALUES (nextval('customer_id_seq'), 756756, 'EXTRA_PREMIUM', 'Ulrich', '03-10-1996', 'Jung', 'COMPANY', 'DE7394789');
+INSERT INTO Customer (id, numberIdentification, profileType, name, birthDate, lastName, accountType, taxNumber) VALUES (nextval('customer_id_seq'), 245477, 'GOLD', 'Piotr', '13-09-1990', 'Nowak', 'COMPANY', 'PL7635467');
+INSERT INTO Customer (id, numberIdentification, profileType, name, birthDate, lastName, accountType, taxNumber) VALUES (nextval('customer_id_seq'), 925436, 'PREMIUM', 'John', '14-06-1988', 'Doe', 'INDIVIDUAL', '');
+INSERT INTO Customer (id, numberIdentification, profileType, name, birthDate, lastName, accountType, taxNumber) VALUES (nextval('customer_id_seq'), 23548, 'STANDARD', 'Paweł', '27-03-2001', 'Jantar', 'INDIVIDUAL', '');
+INSERT INTO Customer (id, numberIdentification, profileType, name, birthDate, lastName, accountType, taxNumber) VALUES (nextval('customer_id_seq'), 365767, 'EXTRA_PREMIUM', 'Tadeusz', '12-10-1979', 'Przybysz', 'COMPANY', 'PL87326');
 
 INSERT INTO Address (id, city, country, addressType, customer_id) VALUES (nextval('address_id_seq'), 'Warsaw', 'Poland', 'PERMANENT', 1);
 INSERT INTO Address (id, city, country, addressType, customer_id) VALUES (nextval('address_id_seq'), 'Berlin', 'Germany', 'PERMANENT', 2);

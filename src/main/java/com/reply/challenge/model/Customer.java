@@ -9,7 +9,6 @@ import java.util.List;
 
 @Entity
 public class Customer {
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customergen")
     @SequenceGenerator(name = "customergen", sequenceName = "customer_id_seq", allocationSize = 1)
@@ -23,21 +22,19 @@ public class Customer {
     private String lastName;
     @Enumerated(EnumType.STRING)
     private AccountType accountType;
-
+    private String taxNumber;
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<PurchaseOrder> orders = new ArrayList<>();
-
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List <Address> addresses;
-
 
     public Customer() {
         super();
     }
 
     public Customer(Integer numberIdentification, ProfileType profileType, String name,
-                    Date birthDate, String lastName, AccountType accountType,
+                    Date birthDate, String lastName, AccountType accountType, String taxNumber,
                     List<PurchaseOrder> orders, List<Address> addresses) {
         this.numberIdentification = numberIdentification;
         this.profileType = profileType;
@@ -45,6 +42,7 @@ public class Customer {
         this.birthDate = birthDate;
         this.lastName = lastName;
         this.accountType = accountType;
+        this.taxNumber = taxNumber;
         this.orders = orders;
         this.addresses = addresses;
     }
@@ -105,6 +103,14 @@ public class Customer {
         this.accountType = accountType;
     }
 
+    public String getTaxNumber() {
+        return taxNumber;
+    }
+
+    public void setTaxNumber(String taxNumber) {
+        this.taxNumber = taxNumber;
+    }
+
     public List<PurchaseOrder> getOrders() {
         return orders;
     }
@@ -120,4 +126,5 @@ public class Customer {
     public void setAddresses(List<Address> addresses) {
         this.addresses = addresses;
     }
+
 }

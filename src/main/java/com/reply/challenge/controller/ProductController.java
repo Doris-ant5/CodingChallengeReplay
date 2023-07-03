@@ -1,5 +1,6 @@
 package com.reply.challenge.controller;
 
+import com.reply.challenge.exception.CategoryNotFound;
 import com.reply.challenge.model.Category;
 import com.reply.challenge.model.Product;
 import com.reply.challenge.service.ProductService;
@@ -15,9 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/products")
 public class ProductController {
-
     private final ProductService productService;
-
     public ProductController(ProductService productService) {
         super();
         this.productService = productService;
@@ -37,15 +36,22 @@ public class ProductController {
                 .body(productService.getProductById(id));
     }
 
-    @GetMapping("searchProductByName/{name}") //localhost:XXXX/api/v1/products/{name}
+    @GetMapping("searchProductByName/{name}") //api/v1/products/searchProductByName/{name}
     private ResponseEntity<Product> getProductName(@PathVariable String name) {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(productService.searchProductByName(name));
     }
 
-    @GetMapping("searchProductByCategory") //localhost:XXXX/api/v1/products/{category}
-    private ResponseEntity<List<Product>> getProductCategory(@RequestParam("category") Category category) {
+    @GetMapping("searchProductByCategory") //api/v1/products/searchProductByCategory{category}
+    private ResponseEntity<List<Product>> getProductCategory(@RequestParam("category") String categoryString) {
+        Category category;
+        try {
+            category = Category.valueOf(categoryString);
+        } catch (IllegalArgumentException e) {
+            throw new CategoryNotFound("Category " + categoryString + " not found.");
+        }
+
         List<Product> products = productService.searchProductByCategory(category);
         if (products.isEmpty()) {
             return ResponseEntity.notFound().build();
@@ -82,7 +88,7 @@ public class ProductController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Product> updateProduct(@PathVariable int id, @RequestBody Product updatedProduct) {
+    public ResponseEntity<Product> updateProductByPriceOrAmount(@PathVariable int id, @RequestBody Product updatedProduct) {
         Product existingProduct = productService.getProductById(id);
         if (existingProduct == null) {
             return ResponseEntity.notFound().build();

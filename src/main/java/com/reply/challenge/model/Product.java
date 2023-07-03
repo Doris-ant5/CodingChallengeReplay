@@ -10,23 +10,16 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "productgen")
     @SequenceGenerator(name = "productgen", sequenceName = "product_id_seq", allocationSize = 1)
     private int id;
-
     private Double price;
-
     private String name;
-
     private Integer amountInStock;
-
     @ManyToMany(mappedBy = "products")
     private List<PurchaseOrder> orders;
-
     @Enumerated(EnumType.STRING)
     private Category category;
-
     public Product() {
         super();
     }
-
     public Product(Double price, String name, Integer amountInStock, Category category) {
         this.price = price;
         this.name = name;
@@ -73,4 +66,5 @@ public class Product {
     public void setCategory(Category category) {
         this.category = category;
     }
+
 }

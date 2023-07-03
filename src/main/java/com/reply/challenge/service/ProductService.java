@@ -1,5 +1,6 @@
 package com.reply.challenge.service;
 
+import com.reply.challenge.exception.InvalidPriceException;
 import com.reply.challenge.exception.ProductNameExistsException;
 import com.reply.challenge.exception.ProductResourceNotFoundException;
 import com.reply.challenge.model.Category;
@@ -12,9 +13,7 @@ import java.util.Optional;
 
 @Service
 public class ProductService {
-
     private final ProductRepository productRepo;
-
     public ProductService(ProductRepository productRepo) {
         super();
         this.productRepo = productRepo;
@@ -69,8 +68,15 @@ public class ProductService {
         if (productOptional.isEmpty()) {
             throw new ProductResourceNotFoundException(getNotFoundProductIdErrorMessage(id));
         }
+        validateProductPrice(product);
         product.setId(id);
         return productRepo.save(product);
+    }
+
+    public void validateProductPrice(Product product) throws InvalidPriceException {
+        if (product.getPrice() != null && product.getPrice() > 1000) {
+            throw new InvalidPriceException("The price of the product must not be more than 1,000.");
+        }
     }
 
     private String getNotFoundCategoryErrorMessage(String category) {
@@ -81,8 +87,8 @@ public class ProductService {
         return "Product with name " + name + " not found.";
     }
 
-
     private String getNotFoundProductIdErrorMessage(int id) {
         return "Product with id " + id + " not found.";
     }
+    
 }

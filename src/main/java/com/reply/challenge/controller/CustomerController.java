@@ -13,13 +13,10 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
-
 @RestController
 @RequestMapping("/api/v1/customers")
 public class CustomerController {
-
     private final CustomerService customerService;
-
     public CustomerController(CustomerService customerService) {
         super();
         this.customerService = customerService;
@@ -39,7 +36,7 @@ public class CustomerController {
                 .body(customerService.getCustomerById(id));
     }
 
-    @GetMapping("searchCustomerByName/{name}") //localhost:XXXX/api/v1/customers/{name}
+    @GetMapping("searchCustomerByName/{name}") //api/v1/customers/searchCustomerByName/{name}
     private ResponseEntity<Customer> getCustomerName(@PathVariable String name) {
         return ResponseEntity
                 .status(HttpStatus.OK)
@@ -58,8 +55,6 @@ public class CustomerController {
                 .status(HttpStatus.OK)
                 .body(customerService.searchCustomerByProfileTypeAndAccountType(profileType, accountType));
     }
-
-
 
     @PostMapping
     public ResponseEntity<Customer> addCustomer(@Valid @RequestBody Customer customer) {
