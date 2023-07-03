@@ -4,7 +4,6 @@ import com.reply.challenge.model.Address;
 import com.reply.challenge.model.Customer;
 import com.reply.challenge.service.AddressService;
 import com.reply.challenge.service.CustomerService;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
