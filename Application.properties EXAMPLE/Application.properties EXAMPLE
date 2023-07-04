@@ -1,18 +1,29 @@
 # Server settings
-server.port=portNumber
+server.port=<portNumber>
 
 # Configuring the connection to the Postgres database
-spring.datasource.url=jdbc:postgresql://localhost:5432/database_name
-spring.datasource.username=username
-spring.datasource.password=password
+spring.datasource.url=jdbc:postgresql://<hostname>:5432/<database_name>
+spring.datasource.username=<username>
+spring.datasource.password=<password>
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 
 # Configuring the connection to the MySQL database 
-spring.datasource.url=jdbc:mysql://localhost:3306/database_name
-spring.datasource.username=username
-spring.datasource.password=password
+spring.datasource.url=jdbc:mysql://<hostname>:3306/<database_name>
+spring.datasource.username=<username>
+spring.datasource.password=<password>
 spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
 
+# Configuring the connection to the H2 database
+spring.datasource.url=jdbc:h2:mem:<database_name>
+spring.datasource.username=<username>
+spring.datasource.password=<password>
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+
+# Configuring the connection to the Oracle database
+spring.datasource.url=jdbc:oracle:thin:@<hostname>:1521:<database_name>
+spring.datasource.username=<username>
+spring.datasource.password=<password>
+spring.jpa.database-platform=org.hibernate.dialect.OracleDialect
 
 # Configuring JPA
 spring.jpa.show-sql=true
