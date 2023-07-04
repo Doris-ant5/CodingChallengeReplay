@@ -7,4 +7,5 @@ public class ProductResourceNotFoundException extends RuntimeException {
     public ProductResourceNotFoundException(String message) {
         super(message);
     }
+
 }

@@ -7,26 +7,21 @@ import java.util.List;
 
 @Entity
 public class PurchaseOrder {
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ordersgen")
     @SequenceGenerator(name = "ordersgen", sequenceName = "orders_id_seq", allocationSize = 1)
     private int id;
-
     private Date orderDate;
-
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
-
     @Enumerated(EnumType.STRING)
     private Status status;
-
-
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinTable(name = "order_product",
             joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id"))
+
     private List<Product> products;
     public PurchaseOrder() {
         super();
@@ -69,4 +64,5 @@ public class PurchaseOrder {
     public void setStatus(Status status) {
         this.status = status;
     }
+
 }

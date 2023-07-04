@@ -5,24 +5,18 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "order_product")
 public class OrderProduct {
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ordersproductgen")
     @SequenceGenerator(name = "ordersproductgen", sequenceName = "orders_product_id_seq", allocationSize = 1)
     private int id;
-
     @ManyToOne
     @JoinColumn(name = "order_id")
     private PurchaseOrder order;
-
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
-
     private int amount;
-
     private double priceItem;
-
     public OrderProduct() {
         super();
     }
@@ -73,4 +67,5 @@ public class OrderProduct {
     public void setPriceItem(double priceItem) {
         this.priceItem = priceItem;
     }
+
 }
