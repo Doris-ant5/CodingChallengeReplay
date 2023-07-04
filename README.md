@@ -16,7 +16,7 @@ First way
 
 Make sure that you have installed the appropriate database on which the application runs. For example, this could be PostgreSQL, MySQL, H2, etc. Configure the database access data based on the provided file in the repository
 
--_**application.properties EXAMPLE**_-
+- Click here: [_**application.properties EXAMPLE**_](https://github.com/Doris-ant5/CodingChallengeReplay/blob/main/Application.properties%20EXAMPLE/Application.properties%20EXAMPLE)
 
 which is located in the project. You can set information such as database URL, username, password, etc.
 
