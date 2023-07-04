@@ -23,9 +23,9 @@ which is located in the project. You can set information such as database URL, u
 
 2. Run the application
 
-Run the application by executing the command 
+Run the application by executing the command
 
-**java -jar target/name_file.jar**
+**java -jar jarfilename.jar**
 
 where name_file.jar is the name specified in the repository which is **Challenge-0.0.2**
 
