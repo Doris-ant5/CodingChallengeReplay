@@ -14,7 +14,7 @@ First way
 
 1. Configure the database
 
-Make sure that you have installed the appropriate database on which the application runs. For example, this could be PostgreSQL, MySQL, H2, etc. Configure the database access data based on the provided file in the repository
+Make sure that you have installed the appropriate database on which the application runs. For example, this could be PostgreSQL, MySQL, H2, etc. Use the provided file in the repository to configure the database access details:
 
 - Click here: [_**application.properties EXAMPLE**_](https://github.com/Doris-ant5/CodingChallengeReplay/blob/main/Application.properties%20EXAMPLE/Application.properties%20EXAMPLE)
 
@@ -31,7 +31,7 @@ where name_file.jar is the name specified in the repository which is **Challenge
 
 3. Check the action of the application
 
-Open a web browser and go to http://localhost:8080 (or another address if you changed the port in the configuration). You should see a welcome page or other page that indicates that the application is working properly.
+Open a web browser and go to http://localhost:8080 (or another address if you changed the port in the configuration). You should see a page that indicates that the application is working properly.
 
 Second way
 -----------
