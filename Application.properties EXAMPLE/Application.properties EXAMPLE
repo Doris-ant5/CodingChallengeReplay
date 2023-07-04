@@ -13,6 +13,18 @@ spring.datasource.username=<username>
 spring.datasource.password=<password>
 spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
 
+# Configuring the connection to the H2 database
+spring.datasource.url=jdbc:h2:mem:<database_name>
+spring.datasource.username=<username>
+spring.datasource.password=<password>
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+
+# Configuring the connection to the Oracle database
+spring.datasource.url=jdbc:oracle:thin:@<hostname>:1521:<database_name>
+spring.datasource.username=<username>
+spring.datasource.password=<password>
+spring.jpa.database-platform=org.hibernate.dialect.OracleDialect
+
 # Configuring JPA
 spring.jpa.show-sql=true
 spring.jpa.properties.format_sql=true
