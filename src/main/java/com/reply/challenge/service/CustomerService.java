@@ -84,7 +84,7 @@ public class CustomerService {
             throw new CustomerResourceNotFoundException(getNotFoundCustomerIdErrorMessage(id));
         }
         validateTaxNumberForCompanyAccount(customer); // Calling the assistant method
-        validateProfileType(customer.getProfileType().toString());
+        validateProfileType(customer.getProfileType().name());
 
         customer.setId(id);
         return customerRepo.save(customer);

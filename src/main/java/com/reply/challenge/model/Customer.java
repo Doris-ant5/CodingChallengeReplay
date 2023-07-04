@@ -15,8 +15,7 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customergen")
     @SequenceGenerator(name = "customergen", sequenceName = "customer_id_seq", allocationSize = 1)
     private int id;
-    @NotBlank(message = "Number identification must not be null or blank.")
-    @Size(min = 2, max= 50, message = "Number identification must be longer than 2 character and less than 50.")
+
     private Integer numberIdentification;
     @Enumerated(EnumType.STRING)
     private ProfileType profileType;
@@ -30,8 +29,7 @@ public class Customer {
     private String lastName;
     @Enumerated(EnumType.STRING)
     private AccountType accountType;
-    @NotBlank(message = "Tax number must not be null or blank.")
-    @Size(min = 1, max= 50, message = "Tax number must be longer than 1 character and less than 50.")
+
     private String taxNumber;
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     @JsonIgnore
