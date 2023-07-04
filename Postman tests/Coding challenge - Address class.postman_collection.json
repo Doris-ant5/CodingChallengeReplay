@@ -1,0 +1,82 @@
+{
+	"info": {
+		"_postman_id": "a57e6e1f-73c2-4354-8e72-a79d0de7208c",
+		"name": "Coding challenge | Address class",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28252995"
+	},
+	"item": [
+		{
+			"name": "Get all addresses",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8066/api/v1/addresses",
+					"host": [
+						"localhost"
+					],
+					"port": "8066",
+					"path": [
+						"api",
+						"v1",
+						"addresses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get address by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8066/api/v1/addresses/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8066",
+					"path": [
+						"api",
+						"v1",
+						"addresses",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add adress to existing customer by ID",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\": \"Warsaw\",\r\n    \"country\": \"Poland\",\r\n    \"addressType\": \"PERMANENT\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8066/api/v1/addresses/addToCustomer/7",
+					"host": [
+						"localhost"
+					],
+					"port": "8066",
+					"path": [
+						"api",
+						"v1",
+						"addresses",
+						"addToCustomer",
+						"7"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

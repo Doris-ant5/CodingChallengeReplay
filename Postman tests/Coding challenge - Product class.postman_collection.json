@@ -1,0 +1,210 @@
+{
+	"info": {
+		"_postman_id": "b25ccf36-234e-4582-8eb3-201988401b3b",
+		"name": "Coding challenge | Product class",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28252995"
+	},
+	"item": [
+		{
+			"name": "Get all products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8066/api/v1/products",
+					"host": [
+						"localhost"
+					],
+					"port": "8066",
+					"path": [
+						"api",
+						"v1",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get product by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8066/api/v1/products/15",
+					"host": [
+						"localhost"
+					],
+					"port": "8066",
+					"path": [
+						"api",
+						"v1",
+						"products",
+						"15"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add new product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"price\": 99.99,\r\n        \"name\": \"shoes\",\r\n        \"amountInStock\": 250,\r\n        \"category\": \"FASHION\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8066/api/v1/products",
+					"host": [
+						"localhost"
+					],
+					"port": "8066",
+					"path": [
+						"api",
+						"v1",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete product by ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8066/api/v1/products/80",
+					"host": [
+						"localhost"
+					],
+					"port": "8066",
+					"path": [
+						"api",
+						"v1",
+						"products",
+						"80"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update product price by ID",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n        \"price\": 10008.50\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8066/api/v1/products/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8066",
+					"path": [
+						"api",
+						"v1",
+						"products",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update product by ID",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"id\": 2,\r\n        \"price\": 50.99,\r\n        \"name\": \"bonsai UPDATED\",\r\n        \"amountInStock\": 8000,\r\n        \"category\": \"GARDEN\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8066/api/v1/products/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8066",
+					"path": [
+						"api",
+						"v1",
+						"products",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get product by name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8066/api/v1/products/searchProductByName/tshirt",
+					"host": [
+						"localhost"
+					],
+					"port": "8066",
+					"path": [
+						"api",
+						"v1",
+						"products",
+						"searchProductByName",
+						"tshirt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get product by category",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8066/api/v1/products/searchProductByCategory?category=FASHION",
+					"host": [
+						"localhost"
+					],
+					"port": "8066",
+					"path": [
+						"api",
+						"v1",
+						"products",
+						"searchProductByCategory"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "FASHION"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
